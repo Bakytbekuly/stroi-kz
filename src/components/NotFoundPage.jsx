@@ -3,8 +3,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NotFoundPage = ({ message = "Error 404 " }) => {
+
     return (
-        <div>
+        <div style={{ margin: "auto" }}>
             <h1>{message}</h1>
 
         </div>

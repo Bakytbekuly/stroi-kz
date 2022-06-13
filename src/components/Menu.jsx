@@ -6,8 +6,8 @@ import { TreeItem, TreeView } from '@mui/lab/';
 import { useEffect } from "react"
 import { fetchStroi } from '../fetchers/fetchStroi'
 import { useDispatch, useSelector } from "react-redux"
-import { setNavigationHome, setStroi } from "../store/slice/stroi";
-import { Link } from 'react-router-dom';
+import { setStroi, setNavigation } from "../store/slice/stroi";
+
 import ItemCategory from './ItemCategory';
 import { LinkBase } from './LinkBase';
 
@@ -31,7 +31,7 @@ export default function RichObjectTreeView() {
 
     const renderTree = (nodes) => (
         <LinkBase to={`/${nodes.id}`} >
-
+            {/* {dispatch(setNavigation(nodes.name))} */}
             <TreeItem key={nodes.id} nodeId={nodes.id} label={<ItemCategory nodes={nodes} />}  >
                 {Array.isArray(nodes.childCategories)
                     ? nodes.childCategories.map((node) => renderTree(node))
@@ -45,7 +45,7 @@ export default function RichObjectTreeView() {
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpanded={['root']}
             defaultExpandIcon={<ChevronRightIcon />}
-            sx={{ height: 200, flexGrow: 100, maxWidth: 400, marginTop: 2, marginLeft: 10 }}
+            sx={{ height: 200, flexGrow: 100, maxWidth: 400, marginTop: 2, marginLeft: 10, minWidth: 400 }}
         >
 
             {val.map((item) => renderTree(item))}

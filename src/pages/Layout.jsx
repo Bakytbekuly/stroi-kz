@@ -15,8 +15,10 @@ const Layout = () => {
 
             </header>
             <main className='container'>
-                <Menu />
-                <Outlet />
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <Menu />
+                    <Outlet /></div>
+
             </main>
 
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { fetchStroiId } from "../fetchers/fetchStroi"
 import GridElement from "./GridElement"
-import NotFoundPage from './NotFoundPage'
 
 const ProductPages = () => {
     const { id } = useParams()
     // console.log(useParams());
     const [product, setProduct] = React.useState([])
-
+    const fullData = useSelector((state) => state.stroi.products);
 
     React.useEffect(() => {
         fetchStroiId({ id }).then(res => {
@@ -16,14 +16,13 @@ const ProductPages = () => {
             setProduct(res)
         })
     }, [id])
-    console.log(product.content);
+
 
     return (
-        <div style={{ marginLeft: "700px" }}>{
-            product.content == false ? <NotFoundPage message={"No Product"} /> :
+        <div style={{ margin: "auto" }}>
 
-                <GridElement product={product} />
-        }</div>
+            <GridElement product={product} />
+        </div>
     )
 }
 

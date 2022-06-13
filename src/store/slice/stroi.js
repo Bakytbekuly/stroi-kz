@@ -4,7 +4,7 @@ export const stroiSlice = createSlice({
     name: "stroi",
     initialState: {
         products: [],
-        navigation: []
+        navigation: null
     },
     reducers: {
         setStroi(state, action) {
@@ -14,16 +14,15 @@ export const stroiSlice = createSlice({
 
         setNavigation(state, action) {
 
-            state.navigation.push(action.payload)
+            state.navigation = action.payload
+            console.log(state.navigation);
         },
 
-        setNavigationHome(state, action) {
-            state.navigation = action.payload
-        }
+
     }
 });
 
 // Action creators are generated for each case reducer function
-export const { setStroi, setNavigation, setNavigationHome } = stroiSlice.actions;
+export const { setStroi, setNavigation } = stroiSlice.actions;
 
 export const stroiReducer = stroiSlice.reducer;
